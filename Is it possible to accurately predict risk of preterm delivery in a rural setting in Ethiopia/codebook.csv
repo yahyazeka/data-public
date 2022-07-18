@@ -1,0 +1,113 @@
+variable,description,values
+start_time,"Start time for the study in gestational age weeks: it takes 0 if the participant was enrolled before or at week 28 of gestation, and the number increases if the participant was enrolled later (left truncation) ",
+time,Number of gestational weeks from origin (28 weeks of gestation) to delivery/censoring,
+outcome2,Preterm live or stillbirth before 37 complete weeks of gestation,"0 ""No"" 1 ""Yes"""
+age_w28*,"Age at gestational age 28 weeks, dummies for individual quintiles",
+amhara,Ethic group: Amhara,"0 ""No"" 1 ""Yes"""
+oromo,Ethic group: Oromo,"0 ""No"" 1 ""Yes"""
+other_ethn,Ethic group: Other,"0 ""No"" 1 ""Yes"""
+orthodox,Religion: orthodox christian,baseline
+muslim,Religion: muslim,"0 ""No"" 1 ""Yes"""
+protestant,Religion: protestant christian,"0 ""No"" 1 ""Yes"""
+edu_none,Educational level: none,"0 ""No"" 1 ""Yes"""
+edu_prim,Educational level: primary or secondary level (formal education),"0 ""No"" 1 ""Yes"""
+edu_higher,"Educational level: diploma, certificate, bachelor","0 ""No"" 1 ""Yes"""
+literate,Can she read?,"0 ""No"" 1 ""Yes"""
+farmer,"Occupation, is she a farmer?","0 ""No"" 1 ""Yes"""
+merchant,"Occupation, is she a merchant?","0 ""No"" 1 ""Yes"""
+petty_trade,"Occupation, does she sell goods and services?","0 ""No"" 1 ""Yes"""
+housewife,"Occupation, is she a housewife?","0 ""No"" 1 ""Yes"""
+unemployed,"Occupation, is she unemployed?","0 ""No"" 1 ""Yes"""
+daily_laborer,"Occupation, is she a daily laborer?","0 ""No"" 1 ""Yes"""
+gov_employee,"Occupation, does she work for the government?","0 ""No"" 1 ""Yes"""
+student,"Occupation, is she a student?","0 ""No"" 1 ""Yes"""
+self_employed,"Occupation, is she self-employed?","0 ""No"" 1 ""Yes"""
+married,Marital status,"0 ""Never married/underaged"" 1 ""Married, in union, divorced, widowed"""
+woreda,Woreda,"0 ""Kewot/Shewa-Robit"" 1 ""Angolela Tera"""
+own_income,Does the family has their own source of income?,"0 ""No"" 1 ""Yes"""
+wealthindex_cat*,Wealth index: dummies for the individual quintiles,
+income_gov,Main source of income: farming activities,"0 ""No"" 1 ""Yes"""
+income_farming,Main source of income: government employment,"0 ""No"" 1 ""Yes"""
+income_ngo,Main source of income: NGO employment,"0 ""No"" 1 ""Yes"""
+income_merchant,Main source of income: Merchant,"0 ""No"" 1 ""Yes"""
+income_private,Main source of income: private employment,"0 ""No"" 1 ""Yes"""
+income_dailylabor,Main source of income: Daily labor,"0 ""No"" 1 ""Yes"""
+income_pettytrader,Main source of income: petty trader,"0 ""No"" 1 ""Yes"""
+hftime*,"Walking time to the nearest health facility (min), dummies for individual quintiles",
+hfdist*,"Walking distance to the nearest health facility (km), dummies for individual quintiles",
+famsize*,"Family size (# individuals in the household), dummies for individual quintiles",
+weight*,"Most recent weight measurement before enrollment in MCH (kg), dummies for individual quintiles",
+height*,"Most recent height measurement before enrollment in MCH (cm), dummies for individual quintiles",
+bmi*,"Preconceptional BMI (kg/m2), dummies for individual quintiles",
+alcohol_2,Did she consume alcohol beverages at least weekly?,"0 ""No"" 1 ""Yes"""
+eatdairy_2,Did she consume dairy products at least weekly?,"0 ""No"" 1 ""Yes"""
+eatbean_2,Did she eat pulses or beans at least weekly?,"0 ""No"" 1 ""Yes"""
+eatfruit_2,Did she eat fruits at least weekly?,"0 ""No"" 1 ""Yes"""
+eatveg_2,Did she eat dark green leafy vegetables at least weekly?,"0 ""No"" 1 ""Yes"""
+eatvita_2,"Did she eat vitamin A rich fruits and vegetables (pumpkins, carrots, squash, or orange flesh sweet potatoes) at least weekly?","0 ""No"" 1 ""Yes"""
+eatofruveg_2,Did she eat other fruits or vegetables at least weekly?,"0 ""No"" 1 ""Yes"""
+eatroot_2,Did she eat roots/tubers at least weekly?,"0 ""No"" 1 ""Yes"""
+eategg_2,Did she eat eggs at least weekly?,"0 ""No"" 1 ""Yes"""
+eatfish_2,Did she eat fish at least weekly?,"0 ""No"" 1 ""Yes"""
+eatmeat_2,Did she eat meat at least weekly?,"0 ""No"" 1 ""Yes"""
+eatteff_2,Did she eat teff at least weekly?,"0 ""No"" 1 ""Yes"""
+eatcer_2,Did she eat cereals at least weekly?,"0 ""No"" 1 ""Yes"""
+eatsug_2,Did she eat sugary food at least weekly?,"0 ""No"" 1 ""Yes"""
+eatoil_2,Did she eat oil or fat products at least weekly?,"0 ""No"" 1 ""Yes"""
+eatfort_2,Did she eat fortified food at least weekly?,"0 ""No"" 1 ""Yes"""
+eatorg_2,"Did she eat liver, kidney, heart or other organ meats at least weekly?","0 ""No"" 1 ""Yes"""
+eatcond_2,Did she consume condiments for flavorat least weekly?,"0 ""No"" 1 ""Yes"""
+eatcoff_2,Did she consume coffee/tea at least weekly?,"0 ""No"" 1 ""Yes"""
+muac_enroll*,"MUAC measurement at enrollment (cm), dummies for individual quintiles",
+iron,Iron intake reported at enrollment (proxy of preconceptional intake),"0 ""No"" 1 ""Yes"""
+folicac,Folic acid intake reported at enrollment (proxy of preconceptional intake),"0 ""No"" 1 ""Yes"""
+prev_still,Hx of previous stillbirths,"0 ""No"" 1 ""Yes"""
+prev_misc,Hx of previous miscarriages,"0 ""No"" 1 ""Yes"""
+prev_preterm,Hx of previous preterm births,"0 ""No"" 1 ""Yes"""
+prev_mg,Hx of previous multiple births,"0 ""No"" 1 ""Yes"""
+prev_csection,Hx of previous c-section,"0 ""No"" 1 ""Yes"""
+prev_lbw,Hx of previous low birth weight,"0 ""No"" 1 ""Yes"""
+surgrep,Hx of surgeriesin reproductive tract,"0 ""No"" 1 ""Yes"""
+gravidity_5,5 or more previous gestations,"0 ""No"" 1 ""Yes"""
+parity_5,5 or more previous deliveries,"0 ""No"" 1 ""Yes"""
+ip_interval,Interpregnancy interval: was previous delivery within the 2 previous years to current conception?,"0 ""No"" 1 ""Yes"""
+vagbl,Vaginal bleeding (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+vom,Vomiting or nausea (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+hdache,Headache (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+blurvis,Blurring of vision (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+ruqabd,Right upper quadrant abdominal pain (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+fever,Fever (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+uripain,Urinari pain (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+urifreq,Urinari frequency (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+uriurg,Urinary urgency (up to week 28 or at enrollment),"0 ""No"" 1 ""Yes"""
+diabetes,Whether the woman had diabetes in past pregnancies,"0 ""No"" 1 ""Yes"""
+preeclampsia,Whether the woman had eclampsia or pre-eclampsia in past pregnancies,"0 ""No"" 1 ""Yes"""
+std,Past medical Hx of sexually transmitted diseases,"0 ""No"" 1 ""Yes"""
+mebendazole,Whether she took mebendazole since becoming pregnant,"0 ""No"" 1 ""Yes"""
+medication,"Whether she took other medications during pregnancy (besides iron, folic acid and mebendazole)","0 ""No"" 1 ""Yes"""
+fasting,Whether the woman was fasting since she realized she was pregnant,"0 ""No"" 1 ""Yes"""
+fetmvmt,Reported decreased fetal movement until w28 or at enrollment,"0 ""No"" 1 ""Yes"""
+anc_vis*,"Estimated number of ANC visits before w28 (recorded + reported at enrollment), dummies for individual quintiles",
+early_anc,First ANC visit before 13 gestational weeks (recorded and reported visits),"0 ""No"" 1 ""Yes"""
+hiv,Does she have HIV infection?,"0 ""No"" 1 ""Yes"""
+syphilis,Does she have syphilis infection?,"0 ""No"" 1 ""Yes"""
+hb*,"Hemoglobin level (g/dL), dummies for individual quintiles",
+hct*,"Hematocrit level (%), dummies for individual quintiles",
+multi_gest,Multiple gestation (suspected for censored observations),"0 ""No"" 1 ""Yes"""
+pallor,Sign: pallor,"0 ""No"" 1 ""Yes"""
+jdice,Sign: jaundice,"0 ""No"" 1 ""Yes"""
+bgroup*,"Dummy variables for all blood groups (A, B, AB, 0)",
+rh,RH factor,"0 ""Negative"" 1 ""Positive"""
+mvi,Multivitamin intake,"0 ""No"" 1 ""Yes"""
+itn,ITN use,"0 ""No"" 1 ""Yes"""
+sbloodpr*,"Systolic blood pressure (mm Hg), dummies for individual quintiles",
+dbloodpr*,"Diastolic blood pressure (mm Hg), dummies for individual quintiles",
+mwbc*,"White blood cells (in x1000 cells/ul), dummies for individual quintiles",
+mnphil*,"Neutrophils (%), dummies for individual quintiles",
+lymph*,"Lymphocytes (%), dummies for individual quintiles",
+leucocyt,Leucokyte esterase,"0 ""No"" 1 ""Yes"""
+nitrites,Nitrites in urine,"0 ""No"" 1 ""Yes"""
+proteinuria,Proteines in urine,"0 ""No"" 1 ""Yes"""
+bacteriuria,Urinari infection (dipstick test),"0 ""No"" 1 ""Yes"""
+neosex,Neonatal sex (data collected at birth),"1 ""Male"" 2 ""Female"""
+signs,"At least one of the following signs and symptoms: headache, blurring of vision, vaginal bleeding, urinari pain, urinari frequency, urinari urgency, decreased fetal movement, vaginal discharge syndrome, right uper quadrant abdominal pain, fever, pallor, jaundice, severe vomiting or nausea","0 ""No"" 1 ""Yes"""
