@@ -1,9 +1,9 @@
-#README
+# README
 This directory contains five prediction models developed for the paper entitled **Is it possible to accurately predict risk of preterm delivery in a rural setting in Ethiopia?**. All models were trained to predict risk of preterm delivery. Each model is saved as a .Rdata object and include all coefficients and feature importance scores to allow predictions for individuals. To load the model, run load("modelname.Rdata") in R.
 
 A codebook of all predictors is also shared as a csv file.
 
-###Study abstract:
+### Study abstract:
 **Background**: Preterm birth complications are the leading causes of death among children under five years. A key practical challenge, however, is the inability to accurately identify pregnancies that are at high risk of preterm delivery, especially in resource-limited settings.
 
 **Methods**: We evaluated whether risk of preterm delivery can be predicted using available data from a pregnancy and birth cohort in North Shewa, Ethiopia. All participants were enrolled in the cohort between December 2018 and March 2020. The study outcome was preterm delivery, defined as any delivery occurring before week 37 of gestation regardless of vital status of the fetus or neonate. A range of sociodemographic, clinical, environmental, and pregnancy-related factors were considered as potential inputs. Cox and accelerated failure time models, and decision tree ensembles were used to predict risk of preterm delivery. Model discrimination was estimated using the area-under-the-curve (AUC). Additionally, the conditional distributions of cervical length (CL) and fetal fibronectin (FFN) were simulated to ascertain whether those factors could improve model performance.
