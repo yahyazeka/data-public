@@ -1,5 +1,7 @@
 # README
-This directory contains analysis code for the paper entitled **Development of prediction models for antenatal care attendance in North Shewa Zone, Ethiopia**. All models were trained to predict risk of failure to attend antenatal care. Analysis code is in .R format.
+This directory contains analysis code for the paper entitled **Development of prediction models for antenatal care attendance in North Shewa Zone, Ethiopia**. All models were trained to predict risk of failure to attend antenatal care. Analysis code is in .R format. 
+
+Data to run the code are not publicly available. Data are only available upon reasonable request to the authors. Data use is governed by the Birhan Data Access Committee (DAC) and follows Birhan’s data sharing policy. All researchers who wish to access Birhan data can complete a Birhan data request form and submit it for decision by the Birhan DAC. Datasets will only be provided with deidentified data to maintain confidentiality of study participants.
 
 ### Study abstract:
 **Background.** In low-resource settings, coverage of at least four antenatal care (ANC) visits remains low. As a first step towards enhancing ANC attendance, this study aims to develop a series of predictive models to identify women who are at high risk of failing to attend ANC in a rural setting in Ethiopia.
