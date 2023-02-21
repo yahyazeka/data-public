@@ -1,8 +1,6 @@
 ###########PREAMBLE###################
 # Study title: Estimates and determinants of health facility delivery in the Birhan maternal and child health cohort study, 2018-2020, Amhara region, Ethiopia
 
-# Description: See analysis plan (https://drive.google.com/file/d/1KUjEXzkrfVDHgOufiHUf6A9k-dppCDxY/view?usp=sharing)
-
 # Notes: This code was written to create the dataset for this study. Further analysis and creation of summary figures 
 # are available in the stata code. This code has been annotated to explain what different sections of code 
 # accomplish and how.  
