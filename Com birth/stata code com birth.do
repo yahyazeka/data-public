@@ -212,11 +212,7 @@ label variable ruralurban "Rural or Urban"
 label define urb_rur 0 "rural" 1 "urban"
 label values ruralurban urb_rur
 
-* 11a. Recategorize hftime as binary (<1hr, >= 1hr)
-gen hftime_bin = 1 if hftime < 60 & !missing(hftime)
-replace hftime_bin = 0 if hftime >= 60 & !missing(hftime)
-
-* 11b. Recategorize hftime into three categories (<0.5, 0.5 to 1 hr, >1hr)
+* 11. Recategorize hftime into three categories (<0.5, 0.5 to 1 hr, >1hr)
 gen hftime_3cat = 0 if hftime <30 & hftime >0
 replace hftime_3cat = 1 if hftime >= 30 & hftime <=60
 replace hftime_3cat = 2 if hftime >60 & !missing(hftime)
