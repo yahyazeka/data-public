@@ -1,7 +1,7 @@
 ########### PREAMBLE ###################
 # ANC coverage manuscript
 # Study lead: Clara Pons Duran
-# Last updated: April 14, 2023 by CPD
+# Last updated: April 17, 2023 by CPD
 
 ########### SETUP ###################
 #Clearing the global environment and console
@@ -34,24 +34,24 @@ setwd(paste0(Sys.getenv("gdrive"), "20. Birhan/11. Analysis/1. Manuscript analys
 
 ########### PREPARING DATA ###################
 #Importing datasets
-all_data <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/MCH/all_data_combined.csv"), guess_max = 5000) %>% 
+all_data <- readr::read_csv(".../all_data_combined.csv", guess_max = 5000) %>% 
   mutate(dodel = as.Date(dodel, "%d%b%Y"))
-ga <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/MCH/specialize_mch_ga_unique_uuid.csv")) %>% 
+ga <- readr::read_csv(".../specialize_mch_ga_unique_uuid.csv") %>% 
   mutate(conc_date = as.Date(conc_date, "%d%b%Y"),
          ga_date = as.Date(ga_date, "%d%b%Y"))
-bo <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/MCH/specialized_mch_birthoutcomes.csv")) %>% 
+bo <- readr::read_csv(".../specialized_mch_birthoutcomes.csv") %>% 
   select_at(vars(c("uuid", "intdt_enroll", "enroll", "birth_outcome", "preg_outcome"))) 
-anc <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/MCH/specialize_mch_anc.csv"))
-phase1_participants <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/Census/phase1_participants.csv"), guess_max = 10000) %>% 
+anc <- readr::read_csv(".../specialize_mch_anc.csv")
+phase1_participants <- readr::read_csv(".../phase1_participants.csv", guess_max = 10000) %>% 
   select_at(vars(c("uuid", "dob", "hhid"))) %>% 
   mutate(dob = as.Date(dob, "%d-%b-%y"))
-wealth <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/Census/specialized_census_wealthindex.csv"), guess_max = 10000)
-census <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24.1. De-identified Birhan Data/5. Data sharing/clara_anc_04132023/Census/census_ind.csv"), guess_max = 100000) %>%  
+wealth <- readr::read_csv(".../specialized_census_wealthindex.csv", guess_max = 10000)
+census <- readr::read_csv(paste0(Sys.getenv("gdrive"), ".../census_ind.csv"), guess_max = 100000) %>%  
   select_at(vars(c("uuid","eduliteracy", "edutype", "woreda", "hftime", "rel", "ethn")))
-alluvial <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24. Birhan Data/4. Specialize/Manuscripts/ANC_tests/anc_alluvial.csv"), guess_max = 100000)
-timepoints <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24. Birhan Data/4. Specialize/Manuscripts/ANC_tests/anc_timepoints.csv"), guess_max = 100000) %>% 
+alluvial <- readr::read_csv(".../anc_alluvial.csv", guess_max = 100000)
+timepoints <- readr::read_csv(".../anc_timepoints.csv", guess_max = 100000) %>% 
   mutate(dodel = as.Date(dodel, "%d%b%Y"))
-anc_retro <- readr::read_csv(paste0(Sys.getenv("gdrive"), "24. Birhan Data/4. Specialize/Manuscripts/ANC_tests/anc_retro.csv")) %>% 
+anc_retro <- readr::read_csv(".../anc_retro.csv") %>% 
    select_at(vars(c("uuid", "intdt_enroll", "anc_retro", "ga_first_retro")))
 
 #Merging datasets
@@ -354,7 +354,7 @@ kable(table1, align = "lcccccccccc", booktabs = T, caption = "Characteristics of
   column_spec(4, extra_css = "border-right: 1px dashed;") %>%
   add_footnote(c("N = 2069 women who were followed-up until delivery before the onset of COVID-19 pandemic"), notation = "symbol")
 
-## SUPPLEMENTAL FILE 1. ANC ATTENDANCE AT DIFFERENT TIMEPOINTS BY GA AT ENROLLMENT ##
+## SUPPLEMENTAL FILE 3. ANC ATTENDANCE AT DIFFERENT TIMEPOINTS BY GA AT ENROLLMENT ##
 data_timepoints_cleaned <- subset(timepoints, dodel<=as.Date("2020-04-09"))
 
 group1 <- subset(data_timepoints_cleaned, enrollment==1) #GROUP 1: women who were enrolled 0-4w
@@ -636,7 +636,7 @@ paste0("(", round(binom.confint(16, 121, methods = "agresti-coull")[,5]*100,1), 
 paste0("(", round(binom.confint(33, 88, methods = "agresti-coull")[,5]*100,1), " - ", format(round(binom.confint(33, 88, method = "agresti-coull")[,6]*100,1)), ")")
 paste0("(", round(binom.confint(52, 74, methods = "agresti-coull")[,5]*100,1), " - ", format(round(binom.confint(52, 74, method = "agresti-coull")[,6]*100,1)), ")")
 
-## SUPPLEMENTAL FILE 3. COMPARING RETROSPECTIVE VISITS WITH SELF-REPORTS ##
+## SUPPLEMENTAL FILE 1. COMPARING RETROSPECTIVE VISITS WITH SELF-REPORTS ##
 # Loading dataset with counts of retrospective visits
 retro_self <- all_data_anc %>% 
   filter(((ga_dodel>=28 & ga_dodel<46) | is.na(ga_dodel)) & ga_enroll>0 & !is.na(ga_enroll)) %>% 
@@ -644,18 +644,63 @@ retro_self <- all_data_anc %>%
   select_at(vars(c("nancvis_enroll", "anc_retro")))
 
 #Agreement between counts of self-reports and retrospective visits
-retro_self %>% 
-  ggplot(aes(x=nancvis_enroll, y=anc_retro)) +
-  geom_count() +
-  xlim(0, 7) +
-  ylim(0, 4) +
-  geom_abline(slope=1, intercept=0)+
-  xlab("Self-reported visits at enrollment")+
-  ylab("Retrospective visits")
+#dataframe
+table5 <- as.data.frame(cbind(
+  c(" ",
+    "1",
+    "2",
+    "3",
+    "4"),
+  c("N",
+    sum(with(retro_self, anc_retro==1),na.rm=T),
+    sum(with(retro_self, anc_retro==2),na.rm=T),
+    sum(with(retro_self, anc_retro==3),na.rm=T),
+    sum(with(retro_self, anc_retro==4),na.rm=T)),
+  c("0",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==0),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==0),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==0),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==0),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("1",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==1),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==1),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==1),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==1),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("2",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==2),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==2),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==2),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==2),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("3",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==3),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==3),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==3),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==3),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("4",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==4),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==4),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==4),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==4),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("5",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==5),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==5),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==5),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==5),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("6",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==6),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==6),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==6),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==6),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%")),
+  c("7",
+    paste0(round((sum(with(retro_self, anc_retro==1 & nancvis_enroll==7),na.rm=T)/sum(with(retro_self, anc_retro==1),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==2 & nancvis_enroll==7),na.rm=T)/sum(with(retro_self, anc_retro==2),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==3 & nancvis_enroll==7),na.rm=T)/sum(with(retro_self, anc_retro==3),na.rm=T))*100,2),"%"),
+    paste0(round((sum(with(retro_self, anc_retro==4 & nancvis_enroll==7),na.rm=T)/sum(with(retro_self, anc_retro==4),na.rm=T))*100,2),"%"))))
 
-retro_self <- subset(retro_self, select = -c(1))
-retro_self <- as.matrix(retro_self)
-retro_self <- t(retro_self)
+colnames(table5) <- NULL 
 
-kripp.alpha(retro_self, method="ordinal")
-# alpha = 0.401 - poor agreement
+#table: distribution of recorded visits that occurred before enrollment and self-reported visits at enrollment
+kable(table5, align = "ccccccccc", booktabs = T, caption = "Assessment of self-reports") %>%
+  kable_classic(full_width=F, html_font = "Arial") %>% 
+  add_header_above(c("Retrospective visits" = 1, " " = 1, "Self-reported visits" = 8), bold=T) %>%
+  row_spec(1, bold = T, extra_css = "border-bottom: 1px solid;")
