@@ -1,5 +1,7 @@
 # README
-This directory contains five prediction models developed for the paper entitled **Development of risk prediction models for preterm delivery in a rural setting in Ethiopia**. All models were trained to predict risk of preterm delivery. Each model is saved as a .Rdata object and include all coefficients and feature importance scores to allow predictions for individuals. To load the model, run load("modelname.Rdata") in R.
+This directory contains five prediction models developed for the paper entitled **Development of risk prediction models for preterm delivery in a rural setting in Ethiopia**. The published paper can be found here: https://jogh.org/2023/jogh-13-04051
+
+All models were trained to predict risk of preterm delivery. Each model is saved as a .Rdata object and include all coefficients and feature importance scores to allow predictions for individuals. To load the model, run load("modelname.Rdata") in R.
 
 A codebook of all predictors is also shared as a csv file.
 
