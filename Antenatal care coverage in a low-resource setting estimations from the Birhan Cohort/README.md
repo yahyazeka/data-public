@@ -1,5 +1,5 @@
 # README
-This directory contains analysis code for the paper entitled **Antenatal care coverage in a low-resource setting estimations from the Birhan Cohort**. The datasets used to conduct the analysis can be found here: XXXX
+This directory contains analysis code for the paper entitled **Antenatal care coverage in a low-resource setting: estimations from the Birhan Cohort**. The datasets used to conduct the final analysis are not yet public. The manuscript preprint can be accessed here: https://www.medrxiv.org/content/10.1101/2023.04.20.23288874v1 
 
 Analytical steps:
 1.	1_specialize - Stata do file that creates three specialized datasets that will be later used to generate some study results.
