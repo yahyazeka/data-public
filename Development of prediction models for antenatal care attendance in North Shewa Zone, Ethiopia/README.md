@@ -1,5 +1,7 @@
 # README
-This directory contains analysis code for the paper entitled **Development of prediction models for antenatal care attendance in North Shewa Zone, Ethiopia**. All models were trained to predict risk of failure to attend antenatal care. Analysis code is in .R format. 
+This directory contains analysis code for the paper entitled **Development of prediction models for antenatal care attendance in North Shewa Zone, Ethiopia**. The published paper can be accessed here: https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2805447. 
+
+All models were trained to predict risk of failure to attend antenatal care. Analysis code is in .R format. 
 
 Data to run the code are not publicly available. Data are only available upon reasonable request to the authors. Data use is governed by the Birhan Data Access Committee (DAC) and follows Birhan’s data sharing policy. All researchers who wish to access Birhan data can complete a Birhan data request form and submit it for decision by the Birhan DAC. Datasets will only be provided with deidentified data to maintain confidentiality of study participants.
 
