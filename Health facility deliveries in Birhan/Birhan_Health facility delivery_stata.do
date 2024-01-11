@@ -83,7 +83,7 @@ label values skilled_att skilldel_att
 *1) uuid: 9092ad8ac19442beb98969ed50ab962c
 *2) uuid: 97e8684eefd7476795270c5dcdb08b01
 *3) uuid: a181f4d499ed46e0b156285222feed81
-*Two mothers were delivered by a HEW in a facility and considered non-skilled (uuid: 5e8f702bd0a844eeb786e376bb413216 and a7fb139c4a0c460b9174fb034dbaa4c3
+*Two mothers were delivered by a HEW in a facility (uuid: 5e8f702bd0a844eeb786e376bb413216 and a7fb139c4a0c460b9174fb034dbaa4c3
 
 
 *4d. Type of delivery attendant in community (home; on the way)
