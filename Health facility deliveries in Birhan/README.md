@@ -1,7 +1,7 @@
 # README
-This directory contains analysis code for the paper entitled "Estimates and determinants of health facility delivery in the Birhan maternal and child health cohort study, 2018–2020, Amhara region, Ethiopia." Analysis code to create the specific dataset is in .R format, further analytical code to define variables, create categories and perform regression analyses are in stata.
+This directory contains analysis code for the paper entitled "Estimates and determinants of health facility delivery in the Birhan maternal and child health cohort study, 2018–2020, Amhara region, Ethiopia." to define variables, create categories and perform regression analyses are in stata.
 
-Data are available upon request. Data use is governed by the Birhan Data Access Committee (DAC) and follows Birhan’s data sharing policy. All researchers who wish to access Birhan data can complete a Birhan data request form. Datasets will be provided with deidentified data to maintain confidentiality of study participants.
+Data used for this analysis will be available in the public repository https://dataverse.harvard.edu/dataverse/haset. Data use is governed by the Birhan Data Access Committee (DAC) and follows Birhan’s data sharing policy. Datasets will be provided with deidentified data to maintain confidentiality of study participants.
 
 ### Study abstract:
 
