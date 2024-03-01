@@ -8,30 +8,15 @@ clear matrix
 clear mata
 set maxvar 20000
 
-* 1. Importing specialized community births dataset
-import excel "H:\Shared drives\20. Birhan\11. Analysis\1. Manuscript analysis\Community births\x. Analysis output\delloc_dat.xlsx", sheet("Sheet1") firstrow
-cd "H:\Shared drives\20. Birhan\11. Analysis\1. Manuscript analysis\Community births\x. Analysis output\Secondary Analysis"
-numlabel, add
+* 1. Importing de-identified community births dataset
+import delimited "...de_identified_homebirths_final.csv", replace
 
-* 2. Applying wealth indices code to generate wealth index quintiles to study population
-gen hhid=hhid_enroll
-merge m:1 hhid using "H:\Shared drives\24. Birhan Data\4. Specialize\Census\specialized_census_wealthindex"
-drop if _merge==2
-drop _merge
-
-* Adding labels
+* 2. Adding labels to wealth index variables
 label define wealthind_5cat 1"Poorest" 2 "Poorer" 3 "Middle" 4 "Richer" 5 "Richest"
 label values wealthindex_5cat wealthind_5cat
 tab wealthindex_5cat
 
-* 3. Adding  variables religion and ethnicity from census, recategorize and relabel
-merge 1:1 uuid using "H:\Shared drives\24. Birhan Data\1. Census\1. Data\3. Indexed\census_ind.dta", keepusing(rel ethn)
-drop if _merge==2
-drop _merge
-tab rel, missing
-tab ethn, missing
-
-* Categorizing and Labelling
+* 3. Categorizing and Labelling religions and ethnicity variables
 gen rel_cat = 0 if rel ==  1 | rel == 3
 replace rel_cat = 1 if rel ==2
 label define religion_cat 0 "Christian" 1 "Muslim"
@@ -84,7 +69,6 @@ label values skilled_att skilldel_att
 *2) uuid: 97e8684eefd7476795270c5dcdb08b01
 *3) uuid: a181f4d499ed46e0b156285222feed81
 *Two mothers were delivered by a HEW in a facility (uuid: 5e8f702bd0a844eeb786e376bb413216 and a7fb139c4a0c460b9174fb034dbaa4c3
-
 
 *4d. Type of delivery attendant in community (home; on the way)
 merge 1:m uuid enroll intdt_enroll dodel intdt_b dcid_b delloc_b facility_b nstillbirth_enroll using "H:\Shared drives\24. Birhan Data\3.MCH\1. Data\3. Indexed\all_data_combined.dta", keepusing(pdelattos)
