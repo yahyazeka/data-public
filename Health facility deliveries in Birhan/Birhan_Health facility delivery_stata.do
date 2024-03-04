@@ -9,7 +9,7 @@ clear mata
 set maxvar 20000
 
 * 1. Importing de-identified community births dataset
-import delimited "...de_identified_homebirths_final.csv", replace
+import delimited "G:\Shared drives\24.1. Phase I Data (de-identified)\6. Manuscripts\homebirths\de_identified_homebirths_data_final.csv"
 
 * 2. Adding labels to wealth index variables
 label define wealthind_5cat 1"Poorest" 2 "Poorer" 3 "Middle" 4 "Richer" 5 "Richest"
@@ -17,14 +17,22 @@ label values wealthindex_5cat wealthind_5cat
 tab wealthindex_5cat
 
 * 3. Categorizing and Labelling religions and ethnicity variables
-gen rel_cat = 0 if rel ==  1 | rel == 3
-replace rel_cat = 1 if rel ==2
+label define rel_cat 1 "1. Orthodox Christian" 2 "2. Muslim" 3 "3. Protestant Christian" 
+// label values rel rel_cat
+encode rel, gen(rel_cat)
+
+replace rel_cat = 0 if rel_cat ==  1 | rel_cat == 3
+replace rel_cat = 1 if rel_cat ==2
 label define religion_cat 0 "Christian" 1 "Muslim"
 label values rel_cat religion_cat
 
-gen ethn_cat = 0 if ethn == 1
-replace ethn_cat = 1 if ethn == 2
-replace ethn_cat =2 if ethn >2  & !missing(ethn)
+
+label define ethn_cat 1 "1. Amhara" 2 "2. Oromo" 6 "6. Harari" 66 "66. Other"
+encode ethn, gen(ethn_cat)
+
+replace ethn_cat = 0 if ethn_cat == 1
+replace ethn_cat = 1 if ethn_cat == 2
+replace ethn_cat =2 if ethn_cat >2  & !missing(ethn_cat)
 label define ethnicity_cat 0 "Amhara" 1 "Oromo" 2 "Other"
 label values ethn_cat ethnicity_cat
 
@@ -71,7 +79,7 @@ label values skilled_att skilldel_att
 *Two mothers were delivered by a HEW in a facility (uuid: 5e8f702bd0a844eeb786e376bb413216 and a7fb139c4a0c460b9174fb034dbaa4c3
 
 *4d. Type of delivery attendant in community (home; on the way)
-merge 1:m uuid enroll intdt_enroll dodel intdt_b dcid_b delloc_b facility_b nstillbirth_enroll using "H:\Shared drives\24. Birhan Data\3.MCH\1. Data\3. Indexed\all_data_combined.dta", keepusing(pdelattos)
+merge 1:m uuid enroll delloc_b facility_b nstillbirth_enroll using "G:\Shared drives\24. Birhan Data\3.MCH\1. Data\3. Indexed\all_data_combined.dta", keepusing(pdelattos)
 drop if _merge==2
 drop _merge
 
